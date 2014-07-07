@@ -1,3 +1,9 @@
+# Public: Config Emacs
+#
+# Examples
+#
+#     include dotfiles::emacs
+
 class dotfiles::emacs {
   include dotfiles::config
 
@@ -7,10 +13,10 @@ class dotfiles::emacs {
 
   file { "${dotfiles::config::home}/.emacs.d/init.el":
     ensure => link,
-    target => "puppet:///modules/dotfiles/emacs/init.el"
+    target => 'puppet:///modules/dotfiles/emacs/init.el'
   }
 
   repository { "${dotfiles::config::home}/.emacs.d/snippets":
-    source => "hanjianwei/yasnippet-snippets"
+    source => 'hanjianwei/yasnippet-snippets'
   }
 }
