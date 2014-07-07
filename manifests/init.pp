@@ -1,3 +1,3 @@
-class config {
+class dotfiles {
   anchor { 'Hello_World': }
 }

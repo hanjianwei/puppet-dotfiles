@@ -1,0 +1,141 @@
+"" important
+set nocompatible " disable Vi compatible
+set pastetoggle=<F12> " key sequence to toggle paste mode
+
+"" Vundle setup
+filetype off " Required for Vundle
+set runtimepath+=~/.vim/bundle/Vundle.vim " Add vundle to RuntimePath
+call vundle#begin()
+
+" let Vundle manage Vundle. Required!
+Plugin 'gmarik/Vundle.vim'
+
+" general
+Plugin 'tpope/vim-surround'
+Plugin 'kien/ctrlp.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'myusuf3/numbers.vim'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'spf13/vim-autoclose'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'mbbill/undotree'
+
+" programming
+Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/nerdcommenter'
+
+" languages
+Plugin 'mattn/emmet-vim'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'jnwhiteh/vim-golang'
+Plugin 'kchmck/vim-coffee-script'
+
+call vundle#end()
+filetype plugin indent on
+
+" AutoClose
+let g:autoclose_vim_commentmode = 1
+
+" vim-indent-guides
+let g:indent_guides_auto_colors = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
+
+"" key mappings
+let mapleader = ','
+
+" filetype settings
+filetype plugin indent on " Turn on Filetype detection, plugins, and indent
+
+autocmd FileType html setlocal ts=2 sts=2 sw=2
+autocmd FileType css setlocal ts=2 sts=2 sw=2
+autocmd FileType ruby setlocal ts=2 sts=2 sw=2
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2
+autocmd FileType go setlocal noexpandtab ts=8 sts=8 sw=8
+autocmd BufNewFile,BufReadPost *.coffee setl sw=2 expandtab
+
+"" moving around, searching and patterns
+set startofline " keep cursor in same column for long-range motion cmds
+set autochdir " change to directory of file in buffer
+set incsearch "	show match for partly typed search command
+set ignorecase " ignore case when using a search pattern
+set smartcase " override 'ignorecase' when pattern has upper case characters
+
+"" tags
+"" displaying text
+set scrolloff=3	" number of screen lines to show around the cursor
+set linebreak " wrap long lines at a character in 'breakat'
+set showbreak=↪\ \  " string to put before wrapped screen lines
+set sidescroll=2 " minimal number of columns to scroll horizontally
+
+" Define characters to show when you show formatting
+" stolen from https://github.com/tpope/vim-sensible
+if &listchars ==# 'eol:$'
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+  if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
+    let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"
+  endif
+endif
+
+set number " show the line number for each line
+
+"" syntax, highlighting and spelling
+set background=dark	" the background color brightness
+syntax enable
+colorscheme koehler
+highlight clear SignColumn " SignColumn should match background for things like vim-gitgutter
+set cursorline " highlight the screen line of the cursor
+
+"" multiple windows
+set laststatus=2 " always use a status line for the last window
+set helpheight=30 " initial height of the help window
+
+"" multiple tab pages
+"" terminal
+"" using the mouse
+"" printing
+"" messages and info
+set showcmd " show (partial) command keys in the status line
+set noshowmode " don't display the current mode in the status line
+set ruler " show cursor position below each window
+set confirm " start a dialog when a command fails
+
+"" selecting text
+set clipboard=unnamed " Yank to the system clipboard by default
+
+"" editing text
+set backspace=indent,eol,start " backspace over everything
+set showmatch " when inserting a bracket, briefly jump to its match
+set nojoinspaces " Use only one space after '.' when joining lines, instead of two
+
+"" tabs and indenting
+set tabstop=4 " number of spaces a <Tab> in the text stands for
+set shiftwidth=4 " number of spaces used for each step of (auto)indent
+set smarttab " a <Tab> in an indent inserts 'shiftwidth' spaces
+set softtabstop=4 " if non-zero, number of spaces to insert for a <Tab>
+set expandtab " expand <Tab> to spaces in Insert mode
+
+"" folding
+set nofoldenable " When opening files, all folds open by default
+
+"" diff mode
+"" mapping
+"" reading and writing files
+set autoread " automatically read a file when it was modified outside of Vim (global or local to buffer)
+
+"" the swap file
+"" command line editing
+set history=200 " how many command lines are remembered
+set wildmode=list:longest,full " Command <Tab> completion, list matches, then longest common part, then all.
+set wildmenu " command-line completion shows a list of matches
+
+"" executing external commands
+"" running make and jumping to errors
+"" language specific
+"" multi-byte characters
+set encoding=utf-8 " character encoding used in Vim
+set fileencodings=ucs-bom,utf-8,gbk,default,latin1 " automatically detected character encodings
+
+"" various
+set gdefault " For :substitute, use the /g flag by default
