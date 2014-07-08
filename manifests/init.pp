@@ -5,10 +5,10 @@
 #     include dotfiles
 
 class dotfiles(
+  $home      = $dotfiles::config::home,
   $repo      = $dotfiles::config::repo,
   $configdir = $dotfiles::config::configdir,
 ) inherits dotfiles::config {
-  $home = $dotfiles::config::home
 
   repository { $configdir:
     source => $repo
