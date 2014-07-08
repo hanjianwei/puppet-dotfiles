@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'dotfiles::firefox' do
+describe 'dotfiles::vimperator' do
   let(:facts) { default_test_facts }
 
   it do
