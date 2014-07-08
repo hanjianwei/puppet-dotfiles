@@ -5,10 +5,12 @@
 #     include dotfiles::firefox
 
 class dotfiles::firefox {
-  include dotfiles::config
+  require dotfiles
 
-  file { "${dotfiles::config::home}/.firefox.conf":
+  $firefoxdir = "${dotfiles::configdir}/firefox"
+
+  file { "${dotfiles::home}/.vimperatorrc":
     ensure => link,
-    target => "${dotfiles::config::srcdir}/firefox/firefox.conf"
+    target => "${firefoxdir}/vimperatorrc"
   }
 }
