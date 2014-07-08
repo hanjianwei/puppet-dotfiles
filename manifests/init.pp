@@ -4,6 +4,17 @@
 #
 #     include dotfiles
 
-class dotfiles {
-  anchor { 'Hello_World': }
+class dotfiles(
+  $repo      = $dotfiles::config::repo,
+  $configdir = $dotfiles::config::configdir,
+) inherits dotfiles::config {
+  $home = $dotfiles::config::home
+
+  repository { $configdir:
+    source => $repo
+  }
+
+  File {
+    require => Repository[$configdir]
+  }
 }

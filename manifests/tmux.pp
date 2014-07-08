@@ -5,10 +5,12 @@
 #     include dotfiles::tmux
 
 class dotfiles::tmux {
-  include dotfiles::config
+  require dotfiles
 
-  file { "${dotfiles::config::home}/.tmux.conf":
+  $tmuxdir = "${dotfiles::configdir}/tmux"
+
+  file { "${dotfiles::home}/.tmux.conf":
     ensure => link,
-    target => "${dotfiles::config::srcdir}/tmux/tmux.conf"
+    target => "${tmuxdir}/tmux.conf"
   }
 }

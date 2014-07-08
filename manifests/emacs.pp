@@ -5,18 +5,20 @@
 #     include dotfiles::emacs
 
 class dotfiles::emacs {
-  include dotfiles::config
+  require dotfiles
 
-  file { "${dotfiles::config::home}/.emacs.d":
+  $emacsdir = "${dotfiles::configdir}/emacs"
+
+  file { "${dotfiles::home}/.emacs.d":
     ensure => directory
   }
 
-  file { "${dotfiles::config::home}/.emacs.d/init.el":
+  file { "${dotfiles::home}/.emacs.d/init.el":
     ensure => link,
-    target => "${dotfiles::config::srcdir}/emacs/init.el"
+    target => "${emacsdir}/init.el"
   }
 
-  repository { "${dotfiles::config::home}/.emacs.d/snippets":
+  repository { "${dotfiles::home}/.emacs.d/snippets":
     source => 'hanjianwei/yasnippet-snippets'
   }
 }

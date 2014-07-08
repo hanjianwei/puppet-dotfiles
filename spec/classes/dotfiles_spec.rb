@@ -3,10 +3,12 @@ require 'spec_helper'
 # Check other boxen modules for examples
 # or read http://rspec-puppet.com/tutorial/
 
-describe 'dotfiles::tmux' do
+describe 'dotfiles' do
   let(:facts) { default_test_facts }
 
   it do
-    should contain_file("/Users/#{facts[:boxen_user]}/.tmux.conf")
+    should contain_repository("#{facts[:boxen_srcdir]}/dotfiles").with({
+      :source => "hanjianwei/dotfiles"
+    })
   end
 end

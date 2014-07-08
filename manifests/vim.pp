@@ -5,14 +5,21 @@
 #     include dotfiles::vim
 
 class dotfiles::vim {
-  include dotfiles::config
+  require dotfiles
 
-  file { "${dotfiles::config::home}/.vimrc":
+  $vimdir = "${dotfiles::configdir}/vim"
+
+  file { "${dotfiles::home}/.vimrc":
     ensure => link,
-    target => "${dotfiles::config::srcdir}/vim/vimrc"
+    target => "${vimdir}/vimrc"
   }
 
-  repository { "${dotfiles::config::home}/.vim/bundle/Vundle.vim":
+  file { "${dotfiles::home}/.gvimrc":
+    ensure => link,
+    target => "${vimdir}/gvimrc"
+  }
+
+  repository { "${dotfiles::home}/.vim/bundle/Vundle.vim":
     source => 'gmarik/Vundle.vim'
   }
   ->

@@ -7,10 +7,6 @@ describe 'dotfiles::emacs' do
   let(:facts) { default_test_facts }
 
   it do
-    should contain_class("dotfiles::config")
-  end
-
-  it do
     should contain_file("/Users/#{facts[:boxen_user]}/.emacs.d/init.el")
   end
 
