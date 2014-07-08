@@ -13,7 +13,7 @@ class dotfiles::emacs {
 
   file { "${dotfiles::config::home}/.emacs.d/init.el":
     ensure => link,
-    target => 'puppet:///modules/dotfiles/emacs/init.el'
+    target => "${dotfiles::config::srcdir}/emacs/init.el"
   }
 
   repository { "${dotfiles::config::home}/.emacs.d/snippets":

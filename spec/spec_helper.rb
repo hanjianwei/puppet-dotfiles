@@ -12,6 +12,7 @@ def default_test_facts
   {
     :boxen_home                  => "/opt/boxen",
     :boxen_user                  => "testuser",
+    :boxen_srcdir                => "/Users/testuser/src",
     :macosx_productversion_major => "10.9",
     :osfamily                    => "Darwin"
   }

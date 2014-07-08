@@ -5,5 +5,6 @@
 #     require dotfiles::config
 
 class dotfiles::config {
-  $home = "/Users/${::boxen_user}"
+  $home   = "/Users/${::boxen_user}"
+  $srcdir = "${::boxen_srcdir}/dotfiles"
 }

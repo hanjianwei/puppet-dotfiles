@@ -9,6 +9,6 @@ class dotfiles::tmux {
 
   file { "${dotfiles::config::home}/.tmux.conf":
     ensure => link,
-    target => 'puppet:///modules/dotfiles/tmux/tmux.conf'
+    target => "${dotfiles::config::srcdir}/tmux/tmux.conf"
   }
 }

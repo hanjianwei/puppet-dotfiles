@@ -9,7 +9,7 @@ class dotfiles::vim {
 
   file { "${dotfiles::config::home}/.vimrc":
     ensure => link,
-    target => 'puppet:///modules/dotfiles/vim/vimrc'
+    target => "${dotfiles::config::srcdir}/vim/vimrc"
   }
 
   repository { "${dotfiles::config::home}/.vim/bundle/Vundle.vim":
