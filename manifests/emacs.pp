@@ -7,15 +7,13 @@
 class dotfiles::emacs {
   require dotfiles
 
-  $emacsdir = "${dotfiles::configdir}/emacs"
-
   file { "${dotfiles::home}/.emacs.d":
     ensure => directory
   }
 
-  file { "${dotfiles::home}/.emacs.d/init.el":
-    ensure => link,
-    target => "${emacsdir}/init.el"
+  dotfiles::link { 'init.el':
+    from => 'emacs',
+    to   => '.emacs.d/',
   }
 
   repository { "${dotfiles::home}/.emacs.d/snippets":

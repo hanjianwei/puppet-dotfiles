@@ -7,10 +7,8 @@
 class dotfiles::tmux {
   require dotfiles
 
-  $tmuxdir = "${dotfiles::configdir}/tmux"
-
-  file { "${dotfiles::home}/.tmux.conf":
-    ensure => link,
-    target => "${tmuxdir}/tmux.conf"
+  dotfiles::link { 'tmux.conf':
+    from   => 'tmux',
+    prefix => '.',
   }
 }

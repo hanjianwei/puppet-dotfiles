@@ -7,16 +7,9 @@
 class dotfiles::vim {
   require dotfiles
 
-  $vimdir = "${dotfiles::configdir}/vim"
-
-  file { "${dotfiles::home}/.vimrc":
-    ensure => link,
-    target => "${vimdir}/vimrc"
-  }
-
-  file { "${dotfiles::home}/.gvimrc":
-    ensure => link,
-    target => "${vimdir}/gvimrc"
+  dotfiles::link { ['vimrc', 'gvimrc']:
+    from   => 'vim',
+    prefix => '.',
   }
 
   repository { "${dotfiles::home}/.vim/bundle/Vundle.vim":

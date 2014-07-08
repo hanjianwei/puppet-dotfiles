@@ -7,20 +7,14 @@
 class dotfiles::keyremap4macbook {
   require dotfiles
 
-  $keyremap4macbookdir = "${dotfiles::configdir}/keyremap4macbook"
-
-  file { "${dotfiles::home}/Library/Preferences/org.pqrs.KeyRemap4MacBook.plist":
-    ensure => link,
-    target => "${keyremap4macbookdir}/org.pqrs.KeyRemap4MacBook.plist"
+  dotfiles::link { ['org.pqrs.KeyRemap4MacBook.plist',
+                    'org.pqrs.KeyRemap4MacBook.multitouchextension.plist']:
+    from => 'keyremap4macbook',
+    to   => 'Library/Preferences/',
   }
 
-  file { "${dotfiles::home}/Library/Preferences/org.pqrs.KeyRemap4MacBook.multitouchextension.plist":
-    ensure => link,
-    target => "${keyremap4macbookdir}/org.pqrs.KeyRemap4MacBook.multitouchextension.plist"
-  }
-
-  file { "${dotfiles::home}/Library/Application Support/KeyRemap4MacBook/private.xml":
-    ensure => link,
-    target => "${keyremap4macbookdir}/private.xml"
+  dotfiles::link { 'private.xml':
+    from => 'keyremap4macbook',
+    to   => 'Library/Application Support/KeyRemap4MacBook/',
   }
 }
