@@ -3,32 +3,12 @@ require 'spec_helper'
 describe 'dotfiles::zsh' do
   let(:facts) { default_test_facts }
 
-  it do
-    should contain_file("/Users/#{facts[:boxen_user]}/.zshrc")
+  ['.zshrc', '.zshenv', '.zlogin', '.zlogout', '.zpreztorc', '.activate.sh'].each do |f|
+    it { should contain_file("#{home}/#{f}") }
   end
 
   it do
-    should contain_file("/Users/#{facts[:boxen_user]}/.zshenv")
-  end
-
-  it do
-    should contain_file("/Users/#{facts[:boxen_user]}/.zlogin")
-  end
-
-  it do
-    should contain_file("/Users/#{facts[:boxen_user]}/.zlogout")
-  end
-
-  it do
-    should contain_file("/Users/#{facts[:boxen_user]}/.zpreztorc")
-  end
-
-  it do
-    should contain_file("/Users/#{facts[:boxen_user]}/.activate.sh")
-  end
-
-  it do
-    should contain_repository("/Users/#{facts[:boxen_user]}/.zprezto").with({
+    should contain_repository("#{home}/.zprezto").with({
       :source => "sorin-ionescu/prezto"
     })
   end

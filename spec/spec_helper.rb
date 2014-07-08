@@ -7,7 +7,6 @@ RSpec.configure do |c|
   c.module_path  = File.join(fixture_path, "modules")
 end
 
-
 def default_test_facts
   {
     :boxen_home                  => "/opt/boxen",
@@ -16,4 +15,8 @@ def default_test_facts
     :macosx_productversion_major => "10.9",
     :osfamily                    => "Darwin"
   }
+end
+
+def home
+  "/Users/#{facts[:boxen_user]}"
 end

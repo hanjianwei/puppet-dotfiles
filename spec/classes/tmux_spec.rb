@@ -4,6 +4,6 @@ describe 'dotfiles::tmux' do
   let(:facts) { default_test_facts }
 
   it do
-    should contain_file("/Users/#{facts[:boxen_user]}/.tmux.conf")
+    should contain_file("#{home}/.tmux.conf")
   end
 end
