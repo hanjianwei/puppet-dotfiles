@@ -7,6 +7,16 @@ Puppet module for app config
 
 See my [dotfiles](https://github.com/hanjianwei/dotfiles) and [boxen](https://boxen.github.com).
 
+
+## Usage
+
+``` puppet
+package { 'vim': }
+->
+class { 'dotfiles::vim': }
+
+```
+
 ## Required Puppet Modules
 
 - `boxen`
