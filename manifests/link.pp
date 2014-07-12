@@ -7,13 +7,16 @@
 define dotfiles::link($config = $title) {
   require dotfiles
 
-  $fullpath = "${dotfiles::home}/${config}"
-  $dir = dirname($fullpath)
+  $srcpath  = "${dotfiles::configdir}/${config}"
+  $linkpath = "${dotfiles::home}/${config}"
+  $linkdir  = dirname($linkpath)
 
-  ensure_resource( 'exec',  "mkdir -p ${dir}")
+  ensure_resource('exec',  "mkdir -p ${linkdir}")
 
-  file { $fullpath:
-    ensure => link,
-    target => "${dotfiles::configdir}/${config}"
+  if file_exists($srcpath) {
+    file { $linkpath:
+      ensure => link,
+      target => $srcpath,
+    }
   }
 }
