@@ -11,10 +11,7 @@ See my [dotfiles](https://github.com/hanjianwei/dotfiles) and [boxen](https://bo
 ## Usage
 
 ``` puppet
-package { 'vim': }
-->
-class { 'dotfiles::vim': }
-
+dotfiles::deploy { 'vim': }
 ```
 
 ## Required Puppet Modules

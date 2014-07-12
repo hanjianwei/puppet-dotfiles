@@ -10,4 +10,8 @@ define dotfiles::deploy($app = $title) {
   $configs = $dotfiles::apps[$app]
 
   dotfiles::link { $configs: }
+
+  if defined("dotfiles::${app}") {
+    include "dotfiles::${app}"
+  }
 }
