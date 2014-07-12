@@ -11,8 +11,10 @@ class dotfiles(
 ) inherits dotfiles::config {
 
   repository { $configdir:
-    source => $repo
+    source => $repo,
   }
+
+  $apps = loadyaml("${configdir}/app.yaml")
 
   File {
     require => Repository[$configdir]

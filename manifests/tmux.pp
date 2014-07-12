@@ -7,8 +7,5 @@
 class dotfiles::tmux {
   require dotfiles
 
-  dotfiles::link { 'tmux.conf':
-    from   => 'tmux',
-    prefix => '.',
-  }
+  dotfiles::deploy { 'tmux': }
 }

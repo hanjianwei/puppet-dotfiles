@@ -7,8 +7,5 @@
 class dotfiles::vimperator {
   require dotfiles
 
-  dotfiles::link { 'vimperatorrc':
-    from   => 'vimperator',
-    prefix => '.',
-  }
+  dotfiles::deploy { 'vimperator': }
 }

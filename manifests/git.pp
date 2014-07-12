@@ -7,8 +7,5 @@
 class dotfiles::git {
   require dotfiles
 
-  dotfiles::link { 'gitconfig':
-    from   => 'git',
-    prefix => '.',
-  }
+  dotfiles::deploy { 'git': }
 }

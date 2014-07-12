@@ -7,15 +7,8 @@
 class dotfiles::zsh {
   require dotfiles
 
-  dotfiles::link { ['zshrc',
-                    'zshenv',
-                    'zlogin',
-                    'zlogout',
-                    'zpreztorc',
-                    'activate.sh']:
-    from   => 'zsh',
-    prefix => '.',
-  }
+  dotfiles::deploy { 'zsh': }
+  dotfiles::deploy { 'prezto': }
 
   repository { "${dotfiles::home}/.zprezto":
     source => 'sorin-ionescu/prezto'

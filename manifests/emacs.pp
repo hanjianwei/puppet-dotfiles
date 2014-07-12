@@ -7,14 +7,7 @@
 class dotfiles::emacs {
   require dotfiles
 
-  file { "${dotfiles::home}/.emacs.d":
-    ensure => directory
-  }
-
-  dotfiles::link { 'init.el':
-    from => 'emacs',
-    to   => '.emacs.d/',
-  }
+  dotfiles::deploy { 'emacs': }
 
   repository { "${dotfiles::home}/.emacs.d/snippets":
     source => 'hanjianwei/yasnippet-snippets'

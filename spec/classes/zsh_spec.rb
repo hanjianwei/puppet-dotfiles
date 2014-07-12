@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'dotfiles::zsh' do
   let(:facts) { default_test_facts }
 
-  ['.zshrc', '.zshenv', '.zlogin', '.zlogout', '.zpreztorc', '.activate.sh'].each do |f|
+  ['.zshrc', '.zshenv', '.zlogin', '.zlogout', '.zpreztorc'].each do |f|
     it { should contain_file("#{home}/#{f}") }
   end
 

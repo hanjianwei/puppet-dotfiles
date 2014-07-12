@@ -2,16 +2,18 @@
 #
 # Examples
 #
-#     include dotfiles::link
+#    dotfiles::link{ '.gitconfig': }
 
-define dotfiles::link($from, $config = $title, $to = '', $prefix='') {
+define dotfiles::link($config = $title) {
   require dotfiles
 
-  $fromdir = "${dotfiles::configdir}/${from}"
-  $todir   = "${dotfiles::home}/${to}"
+  $fullpath = "${dotfiles::home}/${config}"
+  $dir = dirname($fullpath)
 
-  file { "${todir}${prefix}${config}":
+  ensure_resource( 'exec',  "mkdir -p ${dir}")
+
+  file { $fullpath:
     ensure => link,
-    target => "${fromdir}/${config}"
+    target => "${dotfiles::configdir}/${config}"
   }
 }

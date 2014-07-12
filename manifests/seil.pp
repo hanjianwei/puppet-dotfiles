@@ -7,8 +7,5 @@
 class dotfiles::seil {
   require dotfiles
 
-  dotfiles::link { 'org.pqrs.Seil.plist':
-    from => 'seil',
-    to   => 'Library/Preferences/',
-  }
+  dotfiles::deploy { 'seil': }
 }

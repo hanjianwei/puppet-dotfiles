@@ -7,10 +7,7 @@
 class dotfiles::vim {
   require dotfiles
 
-  dotfiles::link { ['vimrc', 'gvimrc']:
-    from   => 'vim',
-    prefix => '.',
-  }
+  dotfiles::deploy { 'vim': }
 
   repository { "${dotfiles::home}/.vim/bundle/Vundle.vim":
     source => 'gmarik/Vundle.vim'
