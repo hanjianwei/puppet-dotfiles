@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'dotfiles::zsh' do
+describe 'dotfiles::prezto' do
   let(:facts) { default_test_facts }
 
   it do

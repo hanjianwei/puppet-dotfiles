@@ -1,10 +1,10 @@
-# Public: Config zsh
+# Public: Config prezto
 #
 # Examples
 #
-#     include dotfiles::zsh
+#     include dotfiles::prezto
 
-class dotfiles::zsh {
+class dotfiles::prezto {
   require dotfiles
 
   repository { "${dotfiles::home}/.zprezto":
