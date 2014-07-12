@@ -6,17 +6,7 @@
 
 class dotfiles(
   $home      = $dotfiles::config::home,
-  $repo      = $dotfiles::config::repo,
   $configdir = $dotfiles::config::configdir,
 ) inherits dotfiles::config {
-
-  repository { $configdir:
-    source => $repo,
-  }
-
   $apps = loadyaml("${configdir}/app.yaml")
-
-  File {
-    require => Repository[$configdir]
-  }
 }
