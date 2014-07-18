@@ -1,5 +1,5 @@
 module Puppet::Parser::Functions
-  newfunction(:parents, :type => :rvalue) do |args|
+  newfunction(:missing_parents, :type => :rvalue) do |args|
     unless args.length == 1
       raise Puppet::Error, "Must provide exactly one arg to parents"
     end
@@ -11,7 +11,7 @@ module Puppet::Parser::Functions
     output = []
     path = File.dirname(args.first)
 
-    until path == '/'
+    until File.exist?(path)
       output.push(path)
       path = File.dirname(path)
     end

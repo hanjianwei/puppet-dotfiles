@@ -10,7 +10,7 @@ define dotfiles::link($config = $title) {
   $srcpath  = "${dotfiles::configdir}/${config}"
   $linkpath = "${dotfiles::home}/${config}"
 
-  $parents = parents($linkpath)
+  $parents = missing_parents($linkpath)
   ensure_resource('file', $parents, {'ensure' => 'directory'})
 
   if file_exists($srcpath) {
