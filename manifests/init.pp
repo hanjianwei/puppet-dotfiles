@@ -5,8 +5,8 @@
 #     include dotfiles
 
 class dotfiles(
-  $home      = $dotfiles::config::home,
-  $configdir = $dotfiles::config::configdir,
+  $home   = $dotfiles::config::home,
+  $prefix = $dotfiles::config::prefix,
 ) inherits dotfiles::config {
-  $apps = loadyaml("${configdir}/app.yaml")
+  $apps = loadyaml("${prefix}/app.yaml")
 }

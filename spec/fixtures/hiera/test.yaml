@@ -1,1 +1,1 @@
-dotfiles::configdir: 'spec/fixtures/data/dotfiles'
+dotfiles::prefix: 'spec/fixtures/data/dotfiles'

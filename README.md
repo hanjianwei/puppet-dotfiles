@@ -17,7 +17,7 @@ dotfiles::deploy { 'vim': }
 You can customize `dotfiles` location by changing Hiera value (e.g. `/opt/boxen/repo/hiera/users/hanjianwei.yaml`):
 
 ~~~ yaml
-dotfiles::configdir: "/Users/%{::boxen_user}/Dropbox/dotfiles"
+dotfiles::prefix: "/Users/%{::boxen_user}/Dropbox/dotfiles"
 ~~~
 
 ## Required Puppet Modules

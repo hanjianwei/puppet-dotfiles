@@ -7,7 +7,7 @@
 define dotfiles::link($config = $title) {
   require dotfiles
 
-  $srcpath  = "${dotfiles::configdir}/${config}"
+  $srcpath  = "${dotfiles::prefix}/${config}"
   $linkpath = "${dotfiles::home}/${config}"
 
   $parents = missing_parents($linkpath)
